@@ -47,7 +47,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
 
-            return redirect()->intended('dashboard')
+            return redirect()->intended('users')
                         ->withSuccess('You have Successfully logged in');
         }
   
@@ -71,20 +71,6 @@ class AuthController extends Controller
         $check = $this->create($data);
          
         return redirect("login")->withSuccess('Great! please login.');
-    }
-    
-    /**
-     * Write code on Method
-     *
-     * @return response()
-     */
-    public function dashboard()
-    {
-        if(Auth::check()){
-            return view('dashboard');
-        }
-  
-        return redirect("login")->withSuccess('Opps! You do not have access');
     }
     
     /**
